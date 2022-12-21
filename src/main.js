@@ -1,62 +1,67 @@
 const { BrowserWindow, Notification } = require("electron");
 const { getConnection } = require("./database");
-
+const path =require('path')
 let window;
 
-const createProduct = async (product) => {
+const createContact = async (contact) => {
+
   try {
     const conn = await getConnection();
-    product.price = parseFloat(product.price);
-    const result = await conn.query("INSERT INTO product SET ?", product);
-    product.id = result.insertId;
+    const result = await conn.query("INSERT INTO contactos SET ?", contact);
 
+    contact.id = result.insertId;
     // Notify the User
     new Notification({
       title: "Electron Mysql",
-      body: "New Product Saved Successfully",
+      body: "Nuevo Contacto Guardado",
     }).show();
 
-    // Return the created Product
-    return product;
+    return contact;
   } catch (error) {
-    console.log(error);
+    console.log("error: ",error);
   }
 };
 
-const getProducts = async () => {
+const getContacts = async () => {
   const conn = await getConnection();
-  const results = await conn.query("SELECT * FROM product ORDER BY id DESC");
+  const results = await conn.query(`SELECT * FROM contactos ORDER BY idcontactos ASC`);
+  // console.log(results)
   return results;
 };
 
-const deleteProduct = async (id) => {
+
+
+const deleteContact = async (id) => {
   const conn = await getConnection();
-  const result = await conn.query("DELETE FROM product WHERE id = ?", id);
+  const result = await conn.query("DELETE FROM contactos WHERE idcontactos = ?", id);
   return result;
 };
 
-const getProductById = async (id) => {
+
+
+const getContactById = async (id) => {
   const conn = await getConnection();
-  const result = await conn.query("SELECT * FROM product WHERE id = ?", id);
+  const result = await conn.query("SELECT * FROM contactos WHERE idcontactos = ?", id);
   return result[0];
 };
 
-const updateProduct = async (id, product) => {
+const updateContact = async (id, product) => {
   const conn = await getConnection();
-  const result = await conn.query("UPDATE product SET ? WHERE Id = ?", [
+  const result = await conn.query("UPDATE contactos SET ? WHERE idcontactos = ?", [
     product,
     id,
   ]);
-  console.log(result)
+  return result
 };
 
 function createWindow() {
   window = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: 900,
+    height: 900,
     webPreferences: {
       nodeIntegration: true,
     },
+    icon:path.join(__dirname, './ui/icono.ico')
   });
 
   window.loadFile("src/ui/index.html");
@@ -64,9 +69,10 @@ function createWindow() {
 
 module.exports = {
   createWindow,
-  createProduct,
-  getProducts,
-  deleteProduct,
-  getProductById,
-  updateProduct
+  // createProduct,
+  createContact,
+  getContacts,
+  deleteContact,
+  getContactById,
+  updateContact
 };

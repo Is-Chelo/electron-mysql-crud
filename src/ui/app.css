@@ -1,10 +1,43 @@
-body {
+/* body {
   margin: 0;
   padding: 0;
+  background-color: #000;
 }
 
 #products {
   height: 100vh;
   overflow-y: auto;
   padding: 2px
+} */
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,400italic);
+@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css);
+html {
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  background: #f1f2f7;
+  font-family: "Open Sans", arial, sans-serif;
+  color: darkslategray;
+}
+
+
+/* panels */
+.panel {
+  background-color: white;
+  color: darkslategray;
+  -webkit-border-radius: 0.3rem;
+  -moz-border-radius: 0.3rem;
+  -ms-border-radius: 0.3rem;
+  border-radius: 0.3rem;
+  margin: 1%;
+}
+.panel > h2, .panel > ul {
+  margin: 1rem;
 }

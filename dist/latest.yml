@@ -1,0 +1,8 @@
+version: 1.0.0
+files:
+  - url: sistema-contactos-Setup-1.0.0.exe
+    sha512: tl4emQY9dIUWtSdCOzgcmu15S4lmnlOPPynxwHXDAv8XU3MxAFCjj0flxgKPMbZ0kY+WVTVDWCCqar4bwpcVCg==
+    size: 51184141
+path: sistema-contactos-Setup-1.0.0.exe
+sha512: tl4emQY9dIUWtSdCOzgcmu15S4lmnlOPPynxwHXDAv8XU3MxAFCjj0flxgKPMbZ0kY+WVTVDWCCqar4bwpcVCg==
+releaseDate: '2022-12-13T02:05:12.282Z'
